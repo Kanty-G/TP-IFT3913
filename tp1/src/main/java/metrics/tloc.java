@@ -19,6 +19,8 @@ public class tloc {
 
         //number of lines
         int tloc = 0; 
+        int loc = 0; //number of lines of code
+        int cloc = 0; //number of comments
 
         try{
             File file = new File(filePathString);
@@ -27,10 +29,14 @@ public class tloc {
             String line = "";
             while ((line = buffer.readLine())!= null){
                 String trimmedLine = line.trim();
-                if(!trimmedLine.isEmpty()&& !trimmedLine.startsWith("//")){
-                    tloc++;
+                if(!trimmedLine.isEmpty()){
+                    loc++;
+                    if(trimmedLine.startsWith("*") || trimmedLine.startsWith("/")){
+                        cloc++;
+                    }
                 } 
             }
+            tloc = loc-cloc;
             buffer.close();
             }catch(Exception e){e.printStackTrace();}
         return tloc;
