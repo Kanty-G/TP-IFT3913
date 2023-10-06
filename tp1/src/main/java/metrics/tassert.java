@@ -1,34 +1,37 @@
+/*
+ * Authors: Kanty Louange Gakima && Yann-Sibril Saah
+ */
+
+
 package metrics;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class tassert {
-  public static int getTassert(String filePathString){
-    int tassert = 0;
-    try{
-      File file = new File(filePathString);
-      FileReader reader = new FileReader(file);
-      BufferedReader buffer = new BufferedReader(reader);
-      String line;
 
+    public static int calculateTassert(String filePath) throws IOException {
+        int tassert = 0;
+      
+        FileReader fileReader = new FileReader(filePath);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-       
-      Pattern Pattern = java.util.regex.Pattern.compile("\\b(assert(ArrayEquals|NotArrayEquals|Equals|NotEquals|True|False|NotNull|Null|Throws|Same|NotSame)?|fail)\\b");
-      while ((line = buffer.readLine())!= null){
-        Matcher matcher = Pattern.matcher(line);
-        while (matcher.find()){
-          tassert++;
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            if (line.trim().isEmpty() && !line.trim().startsWith("//")) {
+                continue;
+            }
+            if (line.contains("assert") || (line.contains("fail"))) {
+                tassert++;
+            }
         }
-      }
-      buffer.close();
-    }catch (Exception e) {e.printStackTrace();}
-  return tassert;
-  }
+        bufferedReader.close();
+        fileReader.close();
+
+        return tassert;
+    }
   
   public static void main(String[] args) {
 
@@ -45,7 +48,7 @@ public class tassert {
             }
             scanner.close();
             String filePath = (hasArgs)? args[0]: entries[0];
-            int  tassert  = getTassert(filePath);
+            int  tassert  = calculateTassert(filePath);
             System.out.println(tassert);
         } catch (Exception e) {e.printStackTrace();}    
     }
