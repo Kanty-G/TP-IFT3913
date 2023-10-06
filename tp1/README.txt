@@ -8,4 +8,4 @@ Pour compiler les 4 fichiers, on doit se rendre dans le répertoire metrics(tp1/
 javac filename
 
 Pour l'execution,tloc.java et tassert.java avec "java -jar [chemin du fichier à évaluer]"  à partir de la ligne de commande ou
-avec java -jar et rentrer le chemin du fichier java quand le programme te le demande
+avec java -jar et rentrer le chemin du fichier java quand le programme demande de le demande
