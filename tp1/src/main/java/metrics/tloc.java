@@ -6,39 +6,29 @@ package metrics;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
+public class tloc{
 
-public class tloc {
-    /**
-     * 
-     * @param filePathString
-     * @return: integer that represents the TLOC
-     */
-    public static int getTloc(String filePathString){
+    public static int calculateTLOC(String filePath) throws IOException {
 
-        //number of lines
-        int tloc = 0; 
-        int loc = 0; //number of lines of code
-        int cloc = 0; //number of comments
+        int tloc = 0;
 
-        try{
-            File file = new File(filePathString);
-            FileReader reader = new FileReader(file);
-            BufferedReader buffer = new BufferedReader(reader);
-            String line = "";
-            while ((line = buffer.readLine())!= null){
-                String trimmedLine = line.trim();
-                if(!trimmedLine.isEmpty()){
-                    loc++;
-                    if(trimmedLine.startsWith("*") || trimmedLine.startsWith("/")){
-                        cloc++;
-                    }
-                } 
+        //we open the file in read mode
+        FileReader fileReader = new FileReader(filePath);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            // Vérifie si la ligne n'est pas vide et ne commence pas par "//"
+            if (!line.isEmpty() && !line.trim().startsWith("/") && !line.trim().startsWith("*")) {
+                tloc++;
             }
-            tloc = loc-cloc;
-            buffer.close();
-            }catch(Exception e){e.printStackTrace();}
+        }
+        //we close the file
+        bufferedReader.close();
+        fileReader.close();
         return tloc;
     }
     
@@ -73,7 +63,7 @@ public class tloc {
             }
             scanner.close();
             String filePath = (hasArgs)? args[0]: entries[0];
-            int tloc    = getTloc(filePath);
+            int tloc  = calculateTLOC(filePath);
             System.out.println(tloc);
         } catch (Exception e) {e.printStackTrace();}       
     }
