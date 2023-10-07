@@ -53,7 +53,7 @@ public class tloc{
             Boolean isValid = isValid(args);
             while(!isValid) {
                 hasArgs = false;
-                System.out.println("Enter a valid java file path:");
+                System.out.println("Entrez un chemin de fichier Java valide:");
                 entries[0] = scanner.nextLine();
                 isValid    = isValid(entries);
             }
