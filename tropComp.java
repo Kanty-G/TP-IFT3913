@@ -61,7 +61,7 @@ public class tropComp {
     public static boolean isTopXPercent(List<String[]> csvData, int column, double x, double valueToCheck) {
         // Validate inputs
         if (csvData == null || column < 0 || x < 0 || x > 100) {
-            throw new IllegalArgumentException("Invalid input parameters.");
+            throw new IllegalArgumentException("Paramètres d'entrée invalides.");
         }
 
         // Extract values from the specified column
