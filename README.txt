@@ -2,7 +2,7 @@ Auteurs:
 
 Kanty-Louange Gakima(matricule:20184109) && Yann-Sibril SAAH (matricule: 20061840) 
 
-lien Github:
+lien Github: https://github.com/gakkal29/TP1-IFT3913
 
 Pour compiler notre code  il suffit d'utiliser la commande javac [nom du fichier java], en faisant attention d'être dans le repertoire TP1-IFT3913
 
