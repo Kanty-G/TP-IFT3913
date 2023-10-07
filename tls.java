@@ -69,7 +69,7 @@ public class tls {
 
         }
 
-        // Exportez les données en CSV
+        // Export the CSV data
         if(outputPath.equals("")|| outputPath.equals(null)){
             return csvData;
         }
@@ -91,7 +91,7 @@ public class tls {
     }
 
 
-    // Fonction pour lister les fichiers Java dans un répertoire
+    // Function to list java files in a repository
     private static List<File> listJavaFiles(File directory) {
         List<File> javaFiles = new ArrayList<>();
         File[] files = directory.listFiles();
@@ -107,7 +107,7 @@ public class tls {
         return javaFiles;
     }
 
-    // Fonction pour extraire le nom du paquet à partir d'un fichier Java
+    // Function to extract package name from a Java file
     private static String getPackageName(File javaFile) {
         
         //we assume that the package name is the name of the parent directory
