@@ -1,0 +1,10 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red42\green49\blue64;\red245\green245\blue246;}
+{\*\expandedcolortbl;;\cssrgb\c21569\c25490\c31765;\cssrgb\c96863\c96863\c97255;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Tropcomp semble \'eatre un bon indicateur de code complexe (code ayant une proportion de code \'e9lev\'e9e et un ratio d'assertions insuffisant, en supposant qu'il s'agisse de fichiers de test). Cependant, pour des seuils bas, il ne semble pas capable de d\'e9tecter des fichiers complexes car le remplissage des deux conditions semble difficile \'e0 atteindre. Il aurait peut-\'eatre \'e9t\'e9 plus efficace sur un r\'e9pertoire de fichiers beaucoup plus grand... Nous pourrions l'am\'e9liorer probablement si nous consid\'e9rions une plus grande quantit\'e9 d'assertions pr\'e9sentes dans JUnit.}
