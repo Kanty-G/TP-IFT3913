@@ -1,6 +1,6 @@
 Auteurs :
 #Kanty Louange Gakima 	matricule: 20184109
-#Yann-Sibril Saah 			matricule: 20061840
+#Yann-Sibril Saah 	matricule: 20061840
 
 Lien Github: https://github.com/gakkal29/TP-IFT3913
 Outil externe utilisé: https://www.sonarsource.com/products/sonarqube/
@@ -35,6 +35,9 @@ Ou dans le dossier téléchargé de mvn, étant dans le repertoire bin(ce que no
   -Dsonar.token={token key généré par sonarQube} -f {repertoire local de jfreeChart}/	pom.xml
 
 Et à ce moment là on a les deux analyses sur le localhost et on a pris les métriques pertinentes pour notre analyse, les résultats se trouvent dans le rapport.
+
+
+Et enfin pour tester la métrique qu'on a implémenter, Densité il suffit de rouler java Densite.java {répertoire local de jfreeChart} et le résultat s'affiche directement sur le terminal.
 
 
 
