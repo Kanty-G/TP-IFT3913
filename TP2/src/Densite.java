@@ -71,7 +71,7 @@ public class Densite {
 
         if (totalTestClasses > 0) {
             double CommentDensity = totalCommentDensity / totalTestClasses;
-            System.out.println("Density: " + CommentDensity + "%");
+            System.out.println("Densité: " + CommentDensity + "%");
         } else {
             System.out.println("No test classes found.");
         }
