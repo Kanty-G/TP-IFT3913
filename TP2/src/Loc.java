@@ -3,18 +3,17 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-//légère modification de TLOC du TP1 pour qu'on puisse lui donner en paramètre un repertoire et il renvoie le 
-//total de lignes de codes des fichiers tests
-public class Tloc {
 
-    public static int calculateTLOC(File file) throws IOException {
-        int tloc = 0;
+public class Loc {
+
+    public static int calculateLOC(File file) throws IOException {
+        int loc = 0;
 
         if (file.isDirectory()) {
             File[] files = file.listFiles();
             if (files != null) {
                 for (File f : files) {
-                    tloc += calculateTLOC(f);
+                    loc += calculateLOC(f);
                 }
             }
         } else if (file.getName().toLowerCase().contains("test") && file.getName().endsWith(".java")) {
@@ -23,16 +22,14 @@ public class Tloc {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                // Verify if the line does not start with comment characters
-                if (!line.trim().startsWith("//") && !line.trim().startsWith("/*") && !line.trim().startsWith("*")) {
-                    tloc++;
+                    loc++;
                 }
-            }
+
             bufferedReader.close();
             fileReader.close();
         }
 
-        return tloc;
+        return loc;
     }
 
     public static void main(String[] args) throws Exception {
@@ -49,7 +46,7 @@ public class Tloc {
             return;
         }
 
-        int tloc = calculateTLOC(directory);
-        System.out.println("TLOC: " + tloc);
+        int loc = calculateLOC(directory);
+        System.out.println("Loc: "+ loc);
     }
 }
