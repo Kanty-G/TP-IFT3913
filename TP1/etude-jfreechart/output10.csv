@@ -1,0 +1,3 @@
+path,package,class,bloc,tassert,tloc/tassert
+../jfreechart-master/src/test/java/org/jfree/chart/renderer/category/BoxAndWhiskerRendererTest.java,org.jfree.chart.renderer.category,BoxAndWhiskerRendererTest,387,40,9.68
+../jfreechart-master/src/test/java/org/jfree/data/time/YearTest.java,org.jfree.data.time,YearTest,328,47,6.98
