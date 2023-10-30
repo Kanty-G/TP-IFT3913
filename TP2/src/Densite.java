@@ -5,9 +5,12 @@ import java.io.IOException;
 
 public class Densite {
 
-    private static int totalTestClasses = 0;
-    private static double totalCommentDensity = 0;
+    private static int totalLOC = 0;
+    private static int totalCommentLines = 0;
 
+    //méthode pour parcourir tous les fichier du répertoire, et calcule le nombre de lignes qui sont des
+    //commentaires que pour les fichiers tests seulement
+    
     private static void fileProcessing(File directory, String[] fileExtensions) {
         File[] files = directory.listFiles();
         if (files != null) {
@@ -16,15 +19,14 @@ public class Densite {
                     fileProcessing(file, fileExtensions);
                 } else {
                     if (isTestFile(file, fileExtensions)) {
-                        double commentDensity = calculateCommentDensity(file);
-                        totalCommentDensity += commentDensity;
-                        totalTestClasses++;
+                        totalCommentLines += calculateCommentLines(file);
                     }
                 }
             }
         }
     }
 
+    //méthode qui vérifie si un fichier est un fichier Test
     private static boolean isTestFile(File file, String[] extensions) {
         for (String extension : extensions) {
             if (file.getName().endsWith("." + extension) && file.getName().toLowerCase().contains("test")) {
@@ -34,11 +36,10 @@ public class Densite {
         return false;
     }
 
-    private static double calculateCommentDensity(File file) {
+    //on calcule le nombre de lignes qui sont des commentaires
+    private static int calculateCommentLines(File file) {
+        int commentLines = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            int totalLOC = 0;
-            int commentLines = 0;
-
             String line;
             while ((line = reader.readLine()) != null) {
                 totalLOC++;
@@ -48,13 +49,10 @@ public class Densite {
                     commentLines++;
                 }
             }
-
-            double commentDensity = totalLOC > 0 ? ((double) commentLines / totalLOC) * 100 : 0;
-            return commentDensity;
         } catch (IOException e) {
             System.err.println("Error reading file " + file.getName() + ": " + e.getMessage());
-            return 0;
         }
+        return commentLines;
     }
 
     public static void main(String[] args) {
@@ -69,12 +67,11 @@ public class Densite {
 
         fileProcessing(directory, fileExtensions);
 
-        if (totalTestClasses > 0) {
-            double CommentDensity = totalCommentDensity / totalTestClasses;
+        if (totalLOC > 0) {
+            double CommentDensity = ((double) totalCommentLines / totalLOC) * 100;
             System.out.println("Densité: " + CommentDensity + "%");
         } else {
             System.out.println("No test classes found.");
         }
     }
-
 }
