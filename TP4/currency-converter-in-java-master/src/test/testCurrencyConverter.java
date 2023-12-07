@@ -129,7 +129,7 @@ public void testBoiteNoire11() throws ParseException {
     Currency.convert(amount, 1.335);
 }
 
-//     /*************************************BOÎTE BLANCHE*******************************/
+  /*************************************BOÎTE BLANCHE*******************************/
 
 
  
@@ -161,6 +161,7 @@ public void testBoiteBlanche2() throws ParseException{
     Currency.convert(amount, 1.50);
 }
 /*******Tests pour le critère de couverture des arcs du graphe de flot de contrôle********/
+    
 /*Méthode mainwindow.convert  */
 
 /** Arc1 : les 2 devises sont valides et se trouvent dans la liste
@@ -231,6 +232,8 @@ public void testBoiteBlanche9() throws ParseException{
     double result =  MainWindow.convert("Roupie", "Mexican Pesos", currencies, 4000.0);
     assertEquals(0.0, result, 0.01); 
 }
+// selon la structure de code on a pas trouvé un 5 ème chemin possible
+    
 /********* Critère de couverture des conditions: il n y a pas de conditions composés dans
  * les 2 méthodes ***/
 
